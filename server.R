@@ -9,6 +9,7 @@ counties <- readRDS("us2.RDS")
 
 us_health_states <- read.csv2("data/clean/us_health_states.csv")
 us_health_counties <- read.csv2("data/clean/us_health_counties.csv")
+us_health_all <- read.csv2("data/clean/all.csv")
 
 
 percent <- function(x, digits = 2, format = "f", ...) {      # Create user-defined function
@@ -98,7 +99,7 @@ server <- function(input, output) {
   })
   
   output$line <- renderEcharts4r({
-    create_line_graph(us_health_states, my_leafdown$curr_sel_data(), 
+    create_line_graph(us_health_all, my_leafdown$curr_sel_data(), 
                       input$prim_var, input$sec_var)
   })
   
