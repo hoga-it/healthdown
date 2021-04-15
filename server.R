@@ -1,4 +1,5 @@
 library(leafdown)
+source('line_graph.R')
 # Run before uploading
 #devtools::install_github("hoga-it/leafdown")
 
@@ -9,9 +10,6 @@ counties <- readRDS("us2.RDS")
 us_health_states <- read.csv2("data/clean/us_health_states.csv")
 us_health_counties <- read.csv2("data/clean/us_health_counties.csv")
 
-# filter date for now
-us_health_states_raw <- us_health_states %>% select(year, ST, Premature.death.YPLL.Rate, Poor.or.fair.health...Fair.Poor)
-us_health_counties_raw <- us_health_counties %>% select(year, ST, NAME_2, Premature.death.YPLL.Rate, Poor.or.fair.health...Fair.Poor)
 
 percent <- function(x, digits = 2, format = "f", ...) {      # Create user-defined function
   paste0(formatC(x * 100, format = format, digits = digits, ...), "%")
@@ -24,7 +22,7 @@ create_labels <- function(data, map_level) {
     Poor or fair health: Fair/Poor: %s<br/>
     </sup>",
     data[, paste0("NAME_", map_level)],
-    percent(data$'Premature death:YPLL Rate'),
+    percent(data$'Premature.death.YPLL.Rate'),
     percent(data$'Poor.or.fair.health...Fair.Poor')
   )
   labels %>% lapply(htmltools::HTML)
@@ -61,10 +59,10 @@ server <- function(input, output) {
     if(my_leafdown$curr_map_level == 2) {
       data$ST <- substr(data$HASC_2, 4, 5)
       # there are counties with the same name in different states so we have to join on both
-      data <- overwrite_join(data, us_health_counties_raw %>% filter(year == input$year), by = c("NAME_2", "ST"))
+      data <- overwrite_join(data, us_health_counties %>% filter(year == input$year), by = c("NAME_2", "ST"))
     } else {
       data$ST <- substr(data$HASC_1, 4, 5)
-      data <- overwrite_join(data, us_health_states_raw %>% filter(year == input$year), by = "ST")
+      data <- overwrite_join(data, us_health_states %>% filter(year == input$year), by = "ST")
     }
     
     # add the data back to the leafdown object
@@ -80,15 +78,10 @@ server <- function(input, output) {
     data <- data()
     
     # depending on the selected KPI in the dropdown we show different data
-    if(input$prim_var == "Premature.death") {
-      data$y <- data$'Premature.death.YPLL.Rate'
-      fillcolor <- leaflet::colorNumeric("Greens", data$y)
-      legend_title <- "Premature death:YPLL Rate"
-    } else {
-      data$y <- data$'Poor.or.fair.health...Fair.Poor'
-      fillcolor <- leaflet::colorNumeric("Greens", data$y)
-      legend_title <- "Poor or fair health:% Fair/Poor"
-    }
+    data$y <- data[, input$prim_var]
+    fillcolor <- leaflet::colorNumeric("Greens", data$y)
+    legend_title <- "Poor or fair health:% Fair/Poor"
+    
     
     labels <- create_labels(data, my_leafdown$curr_map_level)
     # draw the leafdown object
@@ -104,21 +97,9 @@ server <- function(input, output) {
                 opacity = 1)
   })
   
-  df <- data.frame(
-    x = seq(50),
-    y = rnorm(50, 10, 3),
-    z = rnorm(50, 11, 2),
-    w = rnorm(50, 9, 2)
-  )
-  
   output$line <- renderEcharts4r({
-    req(df)
-    
-    df %>% 
-      e_charts(x) %>% 
-      e_line(z) %>% 
-      e_area(w) %>% 
-      e_title("Line and area charts")
+    create_line_graph(us_health_states, my_leafdown$curr_sel_data(), 
+                      input$prim_var, input$sec_var)
   })
   
   output$scatter <- renderEcharts4r({

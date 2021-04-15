@@ -62,14 +62,14 @@ ui = bs4DashPage(
               pickerInput(
                 inputId = "prim_var",
                 label = "Select the Primary Variable",
-                choices = c("Premature death" = "Premature.death","Poor or fair health" = "Poor.or.fair.health"),
-                selected = "Premature.death"
+                choices = c("Premature death" = "Premature.death.YPLL.Rate","Poor or fair health" = "Poor.or.fair.health...Fair.Poor"),
+                selected = "Premature.death.YPLL.Rate"
               ),
               pickerInput(
                 inputId = "sec_var",
                 label = "Select the Secondary Variable",
-                choices = c("Premature death" = "Premature.death","Poor or fair health" = "Poor.or.fair.health"),
-                selected = "Poor or fair health"
+                choices = c("Premature death" = "Premature.death.YPLL.Rate","Poor or fair health" = "Poor.or.fair.health...Fair.Poor"),
+                selected = "Poor.or.fair.health...Fair.Poor"
               )
             )
           )
