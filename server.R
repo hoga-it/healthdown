@@ -1,4 +1,6 @@
 library(leafdown)
+source('utils.R')
+source('scatter_plot.R')
 source('line_graph.R')
 # Run before uploading
 #devtools::install_github("hoga-it/leafdown")
@@ -99,19 +101,11 @@ server <- function(input, output) {
   })
   
   output$line <- renderEcharts4r({
-    create_line_graph(us_health_all, my_leafdown$curr_sel_data(), 
-                      input$prim_var, input$sec_var)
+    create_line_graph(us_health_all, my_leafdown$curr_sel_data(), input$prim_var, input$sec_var)
   })
   
   output$scatter <- renderEcharts4r({
-    df <- my_leafdown$curr_sel_data()
-    
-    if(nrow(df) > 0) {
-      df %>% 
-        group_by(ST) %>%
-        e_charts(Premature.death.YPLL.Rate) %>% 
-        e_scatter(Poor.or.fair.health...Fair.Poor, symbol_size = 15)
-    }
+    create_scatter_plot(my_leafdown$curr_sel_data(), input$prim_var, input$sec_var)
   })
   
   output$bar <- renderEcharts4r({
@@ -136,19 +130,4 @@ server <- function(input, output) {
     names(data) <- c("ST", "YPLL")
     data
   })
-  
-  
-  overwrite_join <- function(x, y, by = NULL){
-    bycols     <- which(colnames(x) %in% by) 
-    commoncols <- which(colnames(x) %in% colnames(y))
-    duplicatecols <- commoncols[!commoncols %in% bycols]
-    
-    if(length(duplicatecols) == 0) {
-      duplicatecols <- c()
-    }
-    
-    out <- x %>% select(-duplicatecols) %>% left_join(y, by = by)
-    return(out)
-  }
-    
 }
