@@ -2,6 +2,7 @@ library(leafdown)
 source('utils.R')
 source('scatter_plot.R')
 source('line_graph.R')
+source('bar_chart.R')
 # Run before uploading
 #devtools::install_github("hoga-it/leafdown")
 
@@ -101,24 +102,22 @@ server <- function(input, output) {
   })
   
   output$line <- renderEcharts4r({
-    create_line_graph(us_health_all, my_leafdown$curr_sel_data(), input$prim_var, input$sec_var)
+    create_line_graph(us_health_all, my_leafdown$curr_sel_data(), 
+                      input$prim_var, input$sec_var) %>%
+      e_group("grp") %>% # assign group
+      e_connect_group("grp") # connect
   })
   
   output$scatter <- renderEcharts4r({
-    create_scatter_plot(my_leafdown$curr_sel_data(), input$prim_var, input$sec_var)
+    create_scatter_plot(my_leafdown$curr_sel_data(), input$prim_var, input$sec_var) %>%
+      e_group("grp") %>% # assign group
+      e_connect_group("grp") # connect
   })
   
   output$bar <- renderEcharts4r({
-    df <- my_leafdown$curr_sel_data()
-    
-    if(nrow(df) > 0) {
-      df %>%
-        e_charts(ST) %>%
-        e_bar(Premature.death.YPLL.Rate) -> plot
-      
-      plot # normal
-      e_flip_coords(plot)
-    }
+    create_bar_chart(my_leafdown$curr_sel_data(), input$prim_var) %>%
+      e_group("grp") %>% # assign group
+      e_connect_group("grp") # connect
   })
   
   
