@@ -33,7 +33,15 @@ create_labels <- function(data, map_level) {
 }
 
 # Define server for leafdown app
-server <- function(input, output) {
+server <- function(input, output, session) {
+  
+  # start introjs when button is pressed with custom options and events
+  observeEvent(input$help,
+               introjs(session, options = list("nextLabel"="Next",
+                                               "prevLabel"="Back",
+                                               "skipLabel"="Skip"))
+  )
+  
   # load the shapes for the two levels
   spdfs_list <- list(states, counties)
 
