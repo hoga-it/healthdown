@@ -117,14 +117,12 @@ for (x in 202:length(files)) {
 }
 reference_header[1:3] <- c("FIPS", "State", "NAME_2")
 names(df) <- c("year", reference_header)
+df <- df %>% left_join(us_election_states %>% select(State, ST))
+df <- df %>% relocate(ST, .before = NAME_2)
 write.csv2(df, "data/clean/all.csv", row.names = FALSE)
 
 states <- df %>% filter(is.na(NAME_2))
-states <- states %>% left_join(us_election_states %>% select(State, ST))
-states <- states %>% relocate(ST, .before = NAME_2)
 write.csv2(states, "data/clean/us_health_states.csv", row.names = FALSE)
 
 counties <- df %>% filter(!is.na(NAME_2))
-counties <- counties %>% left_join(us_election_states %>% select(State, ST))
-counties <- counties %>% relocate(ST, .before = NAME_2)
 write.csv2(counties, "data/clean/us_health_counties.csv", row.names = FALSE)

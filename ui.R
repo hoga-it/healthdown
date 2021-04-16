@@ -28,6 +28,7 @@ ui = bs4DashPage(
     ),
     # we need shinyjs for the leafdown map
     useShinyjs(),
+    introjsUI(),
     fluidRow(
       column(
         width = 2,
@@ -38,6 +39,7 @@ ui = bs4DashPage(
           title = "Health Ranking Data",
           subtitle = "a subtitle here",
           elevation = 1,
+          actionButton("help", "Press for instructions"),
           "Any content here",
           width = 12
         ),
@@ -79,18 +81,28 @@ ui = bs4DashPage(
           # a card for the map
           column(
             width = 7,
-            bs4Card(
-              title = "Map",
-              closable = F,
-              collapsible = F,
-              width = 12,
-              height = 500,
-              # a dropdown to select what KPI should be displayed on the ma
-              # the two buttons used for drilling
-              actionButton("drill_down", "Drill Down"),
-              actionButton("drill_up", "Drill Up"),
-              # the actual map element
-              leafletOutput("leafdown")
+            introBox(
+              bs4Card(
+                title = "Map",
+                closable = F,
+                collapsible = F,
+                width = 12,
+                height = 500,
+                # a dropdown to select what KPI should be displayed on the ma
+                # the two buttons used for drilling
+                introBox(
+                  actionButton("drill_down", "Drill Down"),
+                  actionButton("drill_up", "Drill Up"),
+                  data.step = 2,
+                  data.intro = "Drill the Map! <br> 
+                                  Use these buttons to drill the map on the selected shapes."
+                ),
+                # the actual map element
+                leafletOutput("leafdown")
+              ),
+              data.step = 1,
+              data.intro = "The Map! <br> 
+                              Click on shapes to select them and show their info in the plots."
             ),
             bs4Card(
               width = 12,

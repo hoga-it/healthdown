@@ -1,6 +1,9 @@
 library(leafdown)
+source('utils.R')
+source('scatter_plot.R')
 source('line_graph.R')
 source('table.R')
+source('bar_chart.R')
 # Run before uploading
 #devtools::install_github("hoga-it/leafdown")
 
@@ -10,6 +13,7 @@ counties <- readRDS("us2.RDS")
 
 us_health_states <- read.csv2("data/clean/us_health_states.csv")
 us_health_counties <- read.csv2("data/clean/us_health_counties.csv")
+us_health_all <- read.csv2("data/clean/all.csv")
 
 
 percent <- function(x, digits = 2, format = "f", ...) {      # Create user-defined function
@@ -30,7 +34,15 @@ create_labels <- function(data, map_level) {
 }
 
 # Define server for leafdown app
-server <- function(input, output) {
+server <- function(input, output, session) {
+  
+  # start introjs when button is pressed with custom options and events
+  observeEvent(input$help,
+               introjs(session, options = list("nextLabel"="Next",
+                                               "prevLabel"="Back",
+                                               "skipLabel"="Skip"))
+  )
+  
   # load the shapes for the two levels
   spdfs_list <- list(states, counties)
 
@@ -99,32 +111,22 @@ server <- function(input, output) {
   })
   
   output$line <- renderEcharts4r({
-    create_line_graph(us_health_states, my_leafdown$curr_sel_data(), 
-                      input$prim_var, input$sec_var)
+    create_line_graph(us_health_all, my_leafdown$curr_sel_data(), 
+                      input$prim_var, input$sec_var) %>%
+      e_group("grp") %>% # assign group
+      e_connect_group("grp") # connect
   })
   
   output$scatter <- renderEcharts4r({
-    df <- my_leafdown$curr_sel_data()
-    
-    if(nrow(df) > 0) {
-      df %>% 
-        group_by(ST) %>%
-        e_charts(Premature.death.YPLL.Rate) %>% 
-        e_scatter(Poor.or.fair.health...Fair.Poor, symbol_size = 15)
-    }
+    create_scatter_plot(my_leafdown$curr_sel_data(), input$prim_var, input$sec_var) %>%
+      e_group("grp") %>% # assign group
+      e_connect_group("grp") # connect
   })
   
   output$bar <- renderEcharts4r({
-    df <- my_leafdown$curr_sel_data()
-    
-    if(nrow(df) > 0) {
-      df %>%
-        e_charts(ST) %>%
-        e_bar(Premature.death.YPLL.Rate) -> plot
-      
-      plot # normal
-      e_flip_coords(plot)
-    }
+    create_bar_chart(my_leafdown$curr_sel_data(), input$prim_var) %>%
+      e_group("grp") %>% # assign group
+      e_connect_group("grp") # connect
   })
   
   
@@ -141,19 +143,4 @@ server <- function(input, output) {
     sel_shape_id <- my_leafdown$curr_poly_ids[sel_row]
     my_leafdown$toggle_shape_select(sel_shape_id)
   })
-  
-  
-  overwrite_join <- function(x, y, by = NULL){
-    bycols     <- which(colnames(x) %in% by) 
-    commoncols <- which(colnames(x) %in% colnames(y))
-    duplicatecols <- commoncols[!commoncols %in% bycols]
-    
-    if(length(duplicatecols) == 0) {
-      duplicatecols <- c()
-    }
-    
-    out <- x %>% select(-duplicatecols) %>% left_join(y, by = by)
-    return(out)
-  }
-    
 }
