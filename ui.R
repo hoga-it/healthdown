@@ -39,7 +39,6 @@ ui = bs4DashPage(
           title = "Health Ranking Data",
           subtitle = "a subtitle here",
           elevation = 1,
-          actionButton("help", "Press for instructions"),
           "Any content here",
           width = 12
         ),
@@ -72,6 +71,11 @@ ui = bs4DashPage(
                 label = "Select the Secondary Variable",
                 choices = all_vars,
                 selected = all_vars[1]
+              ),
+              dropdownButton(
+                tags$h3("AA"),
+                actionButton("help", "More information on the app"),
+                circle = TRUE, status = "primary", icon = icon("info-circle"), width = "300px"
               )
             )
           )

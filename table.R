@@ -29,8 +29,6 @@ subset_tbl_data <- function(df, map_level, prim_var) {
   df_sub
 }
 
-
-
 table_options <- function(map_level) {
   tbl_options <- list(
     dom = 'ft', deferRender = TRUE, scrollY = 600, scroller = TRUE, paging = FALSE, bSort = FALSE
@@ -46,5 +44,3 @@ table_options <- function(map_level) {
   }
   tbl_options
 }
-
-

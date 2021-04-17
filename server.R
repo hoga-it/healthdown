@@ -115,4 +115,7 @@ server <- function(input, output, session) {
     sel_shape_id <- my_leafdown$curr_poly_ids[sel_row]
     my_leafdown$toggle_shape_select(sel_shape_id)
   })
+  
+ 
+  
 }
