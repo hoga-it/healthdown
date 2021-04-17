@@ -2,6 +2,7 @@ library(leafdown)
 source('utils.R')
 source('scatter_plot.R')
 source('line_graph.R')
+source('table.R')
 source('bar_chart.R')
 # Run before uploading
 #devtools::install_github("hoga-it/leafdown")
@@ -130,11 +131,16 @@ server <- function(input, output, session) {
   
   
   output$mytable = DT::renderDataTable({
-    req(rv$update_leafdown)
-    # fetch the current metadata from the leafdown object
-    data <- data()
-    data <- data[, c("ST", 'Premature.death.YPLL.Rate')]
-    names(data) <- c("ST", "YPLL")
-    data
+    all_data <- data()
+    sel_data <- my_leafdown$curr_sel_data()
+    map_level <- my_leafdown$curr_map_level
+    create_mytable(all_data, sel_data, map_level)
+  })
+  
+  # (Un)select shapes in map when click on table
+  observeEvent(input$mytable_row_last_clicked, {
+    sel_row <- input$mytable_row_last_clicked
+    sel_shape_id <- my_leafdown$curr_poly_ids[sel_row]
+    my_leafdown$toggle_shape_select(sel_shape_id)
   })
 }
