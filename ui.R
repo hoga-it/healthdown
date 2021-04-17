@@ -8,6 +8,7 @@ library(dplyr)
 library(tidyr)
 library(RColorBrewer)
 library(shinyWidgets)
+library(rintrojs)
 
 ui = bs4DashPage(
   bs4DashSidebar(disable = TRUE),
