@@ -17,7 +17,7 @@ ui = bs4DashPage(
       tags$style(HTML(".leaflet-container { background: #fff; height: 100%}")),
       # workaround for the NA in leaflet legend see https://github.com/rstudio/leaflet/issues/615
       tags$style(HTML(".leaflet-control div:last-child {clear: both;}")),
-      tags$style(HTML(" .widget-user-header {background-color: #16c2d5!important;}")),
+      tags$style(HTML(".widget-user-header {background-color: #16c2d5!important;}")),
       tags$style(HTML(".col-sm-12:last-child .card {margin-bottom: 0 !important;}")),
       tags$style(HTML("#leafdown {height: 90% !important; margin-top: 10px; margin-bottom: 10px;}")),
       tags$style(HTML(".card-header {height: 0;
@@ -58,20 +58,20 @@ ui = bs4DashPage(
               pickerInput(
                 inputId = "year",
                 label = "Select the Year",
-                choices = c("2014", "2015", "2016", "2017", "2018", "2019", "2020"),
-                selected = "2020"
+                choices = all_years,
+                selected = max(all_years)
               ),
               pickerInput(
                 inputId = "prim_var",
                 label = "Select the Primary Variable",
-                choices = c("Premature death" = "Premature.death.YPLL.Rate","Poor or fair health" = "Poor.or.fair.health...Fair.Poor"),
-                selected = "Premature.death.YPLL.Rate"
+                choices = all_vars,
+                selected = all_vars[1]
               ),
               pickerInput(
                 inputId = "sec_var",
                 label = "Select the Secondary Variable",
-                choices = c("Premature death" = "Premature.death.YPLL.Rate","Poor or fair health" = "Poor.or.fair.health...Fair.Poor"),
-                selected = "Poor.or.fair.health...Fair.Poor"
+                choices = all_vars,
+                selected = all_vars[1]
               )
             )
           )
@@ -83,9 +83,8 @@ ui = bs4DashPage(
             width = 7,
             introBox(
               bs4Card(
-                title = "Map",
-                closable = F,
-                collapsible = F,
+                closable = FALSE,
+                collapsible = FALSE,
                 width = 12,
                 height = 500,
                 # a dropdown to select what KPI should be displayed on the ma
@@ -107,9 +106,8 @@ ui = bs4DashPage(
             bs4Card(
               width = 12,
               height = 250,
-              closable = F,
-              collapsible = F,
-              title = "Racial makeup in percentages",
+              closable = FALSE,
+              collapsible = FALSE,
               echarts4rOutput("line",height = 250)
             )
           ),
@@ -118,20 +116,16 @@ ui = bs4DashPage(
           # a column with the two graphs
           column(
             width = 5,
-            # box for racial makeup graph
             bs4Card(
               width = 12,
-              closable = F,
-              collapsible = F,
-              title = "Racial makeup in percentages",
+              closable = FALSE,
+              collapsible = FALSE,
               echarts4rOutput("bar")
             ),
-            # box for party percent graph
             bs4Card(
               width = 12,
-              closable = F,
-              collapsible = F,
-              title = "Votes in percent",
+              closable = FALSE,
+              collapsible = FALSE,
               echarts4rOutput("scatter")
             )
           )
