@@ -116,6 +116,37 @@ server <- function(input, output, session) {
     my_leafdown$toggle_shape_select(sel_shape_id)
   })
   
+  
+  observeEvent(input$show_modal, {
+    ## check whether we have a region selected and can download the report
+      download_region <- downloadButton(
+        outputId = "download_region", 
+        label = "Go to Data Source",
+        class = "border shadow btn btn-outline-secondary btn-sm"
+      )
+      
+      download_customers <- downloadButton(
+        outputId = "download_customers", 
+        label = " Visit Leafdown",
+        class = "border shadow btn btn-outline-secondary btn-sm")
+        
+      download_sales <- downloadButton(
+        outputId = "download_sales", 
+        label = "Take a tour",
+        class = "border shadow btn btn-outline-secondary btn-sm"
+      )
+
+    showModal(modalDialog(
+      title = "Explore",
+      htmlTemplate(
+        "www/reports_modal.html",
+        download_region = download_region,
+        download_customers = download_customers,
+        download_sales = download_sales
+      ),
+      size = "l"
+    ))
+  })
  
   
 }

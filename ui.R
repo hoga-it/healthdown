@@ -74,6 +74,7 @@ ui = bs4DashPage(
                 choices = all_vars,
                 selected = all_vars[1]
               ),
+              actionButton("show_modal", "Generate Report"),
               dropdownButton(
                 tags$h3("AA"),
                 actionButton("help", "More information on the app"),
