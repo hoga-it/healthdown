@@ -1,19 +1,23 @@
-source("utils.R")
-source("scatter_plot.R")
-source("line_graph.R")
-source("table.R")
-source("bar_chart.R")
+source("helpers/utils.R")
+source("helpers/scatter_plot.R")
+source("helpers/line_graph.R")
+source("helpers/table.R")
+source("helpers/bar_chart.R")
 # Run before uploading
 # devtools::install_github("hoga-it/leafdown")
 
 # Comment this when uploading
-states <- readRDS("us1.RDS")
-counties <- readRDS("us2.RDS")
+states <- readRDS("shapes/us1.RDS")
+counties <- readRDS("shapes/us2.RDS")
 
-us_health_states <- readr::read_delim("data/clean/us_health_states.csv", ";", 
-                               escape_double = FALSE, trim_ws = TRUE)
-us_health_counties <- readr::read_delim("data/clean/us_health_counties.csv", ";", 
-                                 escape_double = FALSE, trim_ws = TRUE)
+us_health_states <- readr::read_delim(
+  "data/clean/us_health_states.csv", ";", 
+   escape_double = FALSE, trim_ws = TRUE
+)
+us_health_counties <- readr::read_delim(
+  "data/clean/us_health_counties.csv", ";", 
+  escape_double = FALSE, trim_ws = TRUE
+)
 
 us_health_all <- rbind(us_health_states, us_health_counties)
 
