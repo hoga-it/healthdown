@@ -10,10 +10,16 @@ source("bar_chart.R")
 states <- readRDS("us1.RDS")
 counties <- readRDS("us2.RDS")
 
-us_health_states <- read.csv2("data/clean/us_health_states.csv")
-us_health_counties <- read.csv2("data/clean/us_health_counties.csv")
-us_health_all <- read.csv2("data/clean/all.csv")
+us_health_states <- readr::read_delim("data/clean/us_health_states.csv", ";", 
+                               escape_double = FALSE, trim_ws = TRUE)
+us_health_counties <- readr::read_delim("data/clean/us_health_counties.csv", ";", 
+                                 escape_double = FALSE, trim_ws = TRUE)
+
+us_health_all <- rbind(us_health_states, us_health_counties)
+
 
 all_years <- unique(us_health_all$year)
 # TODO: Ignore CI columns (once we renamed all columns)
 all_vars <- sort(names(us_health_all)[6:ncol(us_health_all)])
+all_vars <- all_vars[!grepl("CI - ", all_vars)]
+all_vars <- all_vars[!grepl("Z-Score", all_vars)]
