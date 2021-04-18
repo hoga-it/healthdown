@@ -16,15 +16,15 @@ percent <- function(x, digits = 2, format = "f", ...) {
   paste0(formatC(x * 100, format = format, digits = digits, ...), "%")
 }
 
-create_labels <- function(data, map_level) {
+create_labels <- function(data, map_level, prim_var, sec_var) {
   labels <- sprintf(
     "<strong>%s</strong><br/>
-    Premature death:YPLL Rate: %s<br/>
-    Poor or fair health: Fair/Poor: %s<br/>
+    %s: %s<br/>
+    %s: %s<br/>
     </sup>",
     data[, paste0("NAME_", map_level)],
-    percent(data$"Premature.death.YPLL.Rate"),
-    percent(data$"Poor.or.fair.health...Fair.Poor")
+    prim_var, data[, prim_var],
+    sec_var, data[, sec_var]
   )
   labels %>% lapply(htmltools::HTML)
 }

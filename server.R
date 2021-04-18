@@ -60,10 +60,10 @@ server <- function(input, output, session) {
     # depending on the selected KPI in the dropdown we show different data
     data$y <- data[, input$prim_var]
     fillcolor <- leaflet::colorNumeric("Greens", data$y)
-    legend_title <- "Poor or fair health:% Fair/Poor"
+    legend_title <- input$prim_var
 
 
-    labels <- create_labels(data, my_leafdown$curr_map_level)
+    labels <- create_labels(data, my_leafdown$curr_map_level, input$prim_var, input$sec_var)
     # draw the leafdown object
     my_leafdown$draw_leafdown(
       fillColor = ~ fillcolor(data$y),
