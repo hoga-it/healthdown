@@ -13,12 +13,12 @@ counties <- readRDS("shapes/us2.RDS")
 us_health_states <- readr::read_delim(
   "data/clean/us_health_states.csv", ";", 
    escape_double = FALSE, trim_ws = TRUE,
-  locale = locale(decimal_mark = ",", grouping_mark = ".")
+  locale = readr::locale(decimal_mark = ",", grouping_mark = ".")
 )
 us_health_counties <- readr::read_delim(
   "data/clean/us_health_counties.csv", ";", 
   escape_double = FALSE, trim_ws = TRUE,
-  locale = locale(decimal_mark = ",", grouping_mark = ".")
+  locale = readr::locale(decimal_mark = ",", grouping_mark = ".")
 )
 
 us_health_all <- rbind(us_health_states, us_health_counties)
