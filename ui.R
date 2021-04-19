@@ -37,7 +37,7 @@ ui = bs4DashPage(
       bs4UserCard(
         type = 2,
         width = 2,
-        src = "https://smalea.com/files/netzwerk/munichom%20logo.png",
+        src = "caduceus1.png",
         status = "info",
         title = "Health Ranking Data",
         elevation = 1,
