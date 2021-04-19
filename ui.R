@@ -27,7 +27,9 @@ ui = bs4DashPage(
                         margin: 0;
                         padding: 0;}")),
       tags$style(HTML(".card-footer {padding: 0rem 0rem;}
-                      .card {height: 100%"))
+                      .card {height: 100%")),
+      tags$style(HTML(".widget-user-header {background-color: #08306B !important}
+                       .widget-user-2 {background-color: #08306B !important}"))
     ),
     # we need shinyjs for the leafdown map
     useShinyjs(),
@@ -37,7 +39,7 @@ ui = bs4DashPage(
       bs4UserCard(
         type = 2,
         width = 2,
-        src = "caduceus1.png",
+        src = "caduceus.png",
         status = "info",
         title = "Health Ranking Data",
         elevation = 1,

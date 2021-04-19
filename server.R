@@ -59,7 +59,7 @@ server <- function(input, output, session) {
 
     # depending on the selected KPI in the dropdown we show different data
     data$y <- data[, input$prim_var]
-    fillcolor <- leaflet::colorNumeric("Greens", data$y)
+    fillcolor <- leaflet::colorNumeric("Blues", data$y)
     legend_title <- input$prim_var
 
 
