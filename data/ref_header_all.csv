@@ -1,116 +1,142 @@
 "x"
-"FIPS"
-"State"
-"County"
-"Premature death:# Deaths"
-"Premature death:YPLL Rate"
-"Premature death:95% CI - Low"
-"Premature death:95% CI - High"
-"Premature death:Z-Score"
-"Poor or fair health:% Fair/Poor"
-"Poor or fair health:95% CI - Low"
-"Poor or fair health:95% CI - High"
-"Poor or fair health:Z-Score"
-"Poor physical health days:Physically Unhealthy Days"
-"Poor physical health days:95% CI - Low"
-"Poor physical health days:95% CI - High"
-"Poor physical health days:Z-Score"
-"Poor mental health days:Mentally Unhealthy Days"
-"Poor mental health days:95% CI - Low"
-"Poor mental health days:95% CI - High"
-"Poor mental health days:Z-Score"
-"Low birthweight:Unreliable"
-"Low birthweight:# Low Birthweight Births"
-"Low birthweight:# Live births"
-"Low birthweight:% LBW"
-"Low birthweight:95% CI - Low"
-"Low birthweight:95% CI - High"
-"Low birthweight:Z-Score"
-"Adult smoking:% Smokers"
-"Adult smoking:95% CI - Low"
-"Adult smoking:95% CI - High"
-"Adult smoking:Z-Score"
-"Adult obesity:% Obese"
-"Adult obesity:95% CI - Low"
-"Adult obesity:95% CI - High"
-"Adult obesity:Z-Score"
-"Food environment index:Food Environment Index"
-"Food environment index:Z-Score"
-"Physical inactivity:% Physically Inactive"
-"Physical inactivity:95% CI - Low"
-"Physical inactivity:95% CI - High"
-"Physical inactivity:Z-Score"
-"Access to exercise opportunities:% With Access"
-"Access to exercise opportunities:Z-Score"
-"Excessive drinking:% Excessive Drinking"
-"Excessive drinking:95% CI - Low"
-"Excessive drinking:95% CI - High"
-"Excessive drinking:Z-Score"
-"Alcohol-impaired driving deaths:# Alcohol-Impaired Driving Deaths"
-"Alcohol-impaired driving deaths:# Driving Deaths"
-"Alcohol-impaired driving deaths:% Alcohol-Impaired"
-"Alcohol-impaired driving deaths:Z-Score"
-"Sexually transmitted infections:# Chlamydia Cases"
-"Sexually transmitted infections:Chlamydia Rate"
-"Sexually transmitted infections:Z-Score"
-"Teen births:Teen Births"
-"Teen births:Teen Population"
-"Teen births:Teen Birth Rate"
-"Teen births:95% CI - Low"
-"Teen births:95% CI - High"
-"Teen births:Z-Score"
-"Uninsured:# Uninsured"
-"Uninsured:% Uninsured"
-"Uninsured:95% CI - Low"
-"Uninsured:95% CI - High"
-"Uninsured:Z-Score"
-"Primary care physicians:# PCP"
-"Primary care physicians:# PCP Rate"
-"Primary care physicians:# PCP Ratio"
-"Primary care physicians:Z-Score"
-"Preventable hospital stays:# Medicare enrollees"
-"Preventable hospital stays:ACSC Rate"
-"Preventable hospital stays:95% CI - Low"
-"Preventable hospital stays:95% CI - High"
-"Preventable hospital stays:Z-Score"
-"Mammography screening:# Medicare Enrollees"
-"Mammography screening:% Mammography"
-"Mammography screening:95% CI - Low"
-"Mammography screening:95% CI - High"
-"Mammography screening:Z-Score"
-"Some college:# Some College"
-"Some college:Population"
-"Some college:% Some College"
-"Some college:95% CI - Low"
-"Some college:95% CI - High"
-"Some college:Z-Score"
-"Unemployment:# Unemployed"
-"Unemployment:Labor Force"
-"Unemployment:% Unemployed"
-"Unemployment:Z-Score"
-"Children in single-parent households:# Single-Parent Households"
-"Children in single-parent households:# Households"
-"Children in single-parent households:% Single-Parent Households"
-"Children in single-parent households:95% CI - Low"
-"Children in single-parent households:95% CI - High"
-"Children in single-parent households:Z-Score"
-"Violent crime:# Annual Violent Crimes"
-"Violent crime:Violent Crime Rate"
-"Violent crime:Z-Score"
-"Injury deaths:# Injury Deaths"
-"Injury deaths:Injury Death Rate"
-"Injury deaths:95% CI - Low"
-"Injury deaths:95% CI - High"
-"Injury deaths:Z-Score"
-"Air pollution - particulate matter:Average daily PM25"
-"Air pollution - particulate matter:Z-Score"
-"Severe housing problems:# Households with Severe Problems"
-"Severe housing problems:% Severe Housing Problems"
-"Severe housing problems:95% CI - Low"
-"Severe housing problems:95% CI - High"
-"Severe housing problems:Z-Score"
-"Long commute - driving alone:# Workers who Drive Alone"
-"Long commute - driving alone:% Long Commute - Drives Alone"
-"Long commute - driving alone:95% CI - Low"
-"Long commute - driving alone:95% CI - High"
-"Long commute - driving alone:Z-Score"
+"FIPS"; "FIPS"
+"State"; "State"
+"County"; "County"
+
+"Premature death:# Deaths";
+"Premature death:YPLL Rate"; 
+"Premature death:95% CI - Low"; 
+"Premature death:95% CI - High"; 
+"Premature death:Z-Score";
+
+"Poor or fair health:% Fair/Poor";
+"Poor or fair health:95% CI - Low";
+"Poor or fair health:95% CI - High";
+"Poor or fair health:Z-Score";
+
+"Poor physical health days:Physically Unhealthy Days";
+"Poor physical health days:95% CI - Low";
+"Poor physical health days:95% CI - High";
+"Poor physical health days:Z-Score";
+
+"Poor mental health days:Mentally Unhealthy Days";
+"Poor mental health days:95% CI - Low";
+"Poor mental health days:95% CI - High";
+"Poor mental health days:Z-Score";
+
+"Low birthweight:Unreliable";
+"Low birthweight:# Low Birthweight Births";
+"Low birthweight:# Live births";
+"Low birthweight:% LBW";
+"Low birthweight:95% CI - Low";
+"Low birthweight:95% CI - High";
+"Low birthweight:Z-Score";
+
+"Adult smoking:% Smokers";
+"Adult smoking:95% CI - Low";
+"Adult smoking:95% CI - High";
+"Adult smoking:Z-Score";
+
+"Adult obesity:% Obese";
+"Adult obesity:95% CI - Low";
+"Adult obesity:95% CI - High";
+"Adult obesity:Z-Score";
+
+"Food environment index:Food Environment Index";
+"Food environment index:Z-Score";
+
+"Physical inactivity:% Physically Inactive";
+"Physical inactivity:95% CI - Low";
+"Physical inactivity:95% CI - High";
+"Physical inactivity:Z-Score";
+
+"Access to exercise opportunities:% With Access";
+"Access to exercise opportunities:Z-Score";
+
+"Excessive drinking:% Excessive Drinking";
+"Excessive drinking:95% CI - Low";
+"Excessive drinking:95% CI - High";
+"Excessive drinking:Z-Score";
+
+"Alcohol-impaired driving deaths:# Alcohol-Impaired Driving Deaths";
+"Alcohol-impaired driving deaths:# Driving Deaths";
+"Alcohol-impaired driving deaths:% Alcohol-Impaired";
+"Alcohol-impaired driving deaths:Z-Score";
+
+"Sexually transmitted infections:# Chlamydia Cases";
+"Sexually transmitted infections:Chlamydia Rate";
+"Sexually transmitted infections:Z-Score";
+
+"Teen births:Teen Births";
+"Teen births:Teen Population";
+"Teen births:Teen Birth Rate";
+"Teen births:95% CI - Low";
+"Teen births:95% CI - High";
+"Teen births:Z-Score";
+
+"Uninsured:# Uninsured";
+"Uninsured:% Uninsured";
+"Uninsured:95% CI - Low";
+"Uninsured:95% CI - High";
+"Uninsured:Z-Score";
+
+"Primary care physicians:# PCP";
+"Primary care physicians:# PCP Rate";
+"Primary care physicians:# PCP Ratio";
+"Primary care physicians:Z-Score";
+
+"Preventable hospital stays:# Medicare enrollees";
+"Preventable hospital stays:ACSC Rate";
+"Preventable hospital stays:95% CI - Low";
+"Preventable hospital stays:95% CI - High";
+"Preventable hospital stays:Z-Score";
+
+"Mammography screening:# Medicare Enrollees";
+"Mammography screening:% Mammography";
+"Mammography screening:95% CI - Low";
+"Mammography screening:95% CI - High";
+"Mammography screening:Z-Score";
+
+"Some college:# Some College";
+"Some college:Population";
+"Some college:% Some College";
+"Some college:95% CI - Low";
+"Some college:95% CI - High";
+"Some college:Z-Score";
+
+"Unemployment:# Unemployed";
+"Unemployment:Labor Force";
+"Unemployment:% Unemployed";
+"Unemployment:Z-Score";
+
+"Children in single-parent households:# Single-Parent Households";
+"Children in single-parent households:# Households";
+"Children in single-parent households:% Single-Parent Households";
+"Children in single-parent households:95% CI - Low";
+"Children in single-parent households:95% CI - High";
+"Children in single-parent households:Z-Score";
+
+"Violent crime:# Annual Violent Crimes";
+"Violent crime:Violent Crime Rate";
+"Violent crime:Z-Score";
+
+"Injury deaths:# Injury Deaths";
+"Injury deaths:Injury Death Rate";
+"Injury deaths:95% CI - Low";
+"Injury deaths:95% CI - High";
+"Injury deaths:Z-Score";
+
+"Air pollution - particulate matter:Average daily PM25";
+"Air pollution - particulate matter:Z-Score";
+
+"Severe housing problems:# Households with Severe Problems";
+"Severe housing problems:% Severe Housing Problems";
+"Severe housing problems:95% CI - Low";
+"Severe housing problems:95% CI - High";
+"Severe housing problems:Z-Score";
+
+"Long commute - driving alone:# Workers who Drive Alone";
+"Long commute - driving alone:% Long Commute - Drives Alone";
+"Long commute - driving alone:95% CI - Low";
+"Long commute - driving alone:95% CI - High";
+"Long commute - driving alone:Z-Score";

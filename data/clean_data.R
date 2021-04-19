@@ -1,6 +1,6 @@
 library(readxl)
 library(tibble)
-library(RSQLite)
+library(stringr)
 # check if all files have the same columns...
 ## loop 
 files <- list.files(path="data/raw", pattern="*.xls", full.names=TRUE, recursive=FALSE)
@@ -23,9 +23,10 @@ for (x in 202:length(files)) {
   }
   
   previous_col <- ""
-  for(column_index in 4:dim(file)[2]) {
+  for(column_index in 4:ncol(file)) {
     current_col <- file[1, column_index]
     
+    # TODO move renaming to later
     if(is.na(current_col)) {
       
     } else if(current_col == "Preventable hospital stays (Ambulatory Care Sensitive Conditions)") {
@@ -39,8 +40,6 @@ for (x in 202:length(files)) {
     
     if(is.na(current_col)) {
       file[1, column_index] <- previous_col
-    } else if(!current_col %in% cols) {
-      file[1, column_index] <- NA
     }
     
     previous_col <- file[1, column_index]
@@ -90,9 +89,12 @@ for (x in 202:length(files)) {
     
     
     
-  
+  #trim empty lines
   file <- file[!is.na(file[,1]),]
+  
+  # remove header lines
   file <- file[-c(1:2), ]
+  
   
   names(file) <- header
   
@@ -115,6 +117,8 @@ for (x in 202:length(files)) {
   
   df <- rbind(df, file)
 }
+df[,5:dim(df)[2]] <- sapply(df[,5:dim(df)[2]], as.numeric)
+
 reference_header[1:3] <- c("FIPS", "State", "NAME_2")
 names(df) <- c("year", reference_header)
 df <- df %>% left_join(us_election_states %>% select(State, ST))
