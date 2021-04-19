@@ -20,80 +20,74 @@ ui = bs4DashPage(
       # workaround for the NA in leaflet legend see https://github.com/rstudio/leaflet/issues/615
       tags$style(HTML(".leaflet-control div:last-child {clear: both;}")),
       tags$style(HTML(".widget-user-header {background-color: #16c2d5!important;}")),
-      tags$style(HTML(".col-sm-12:last-child .card {margin-bottom: 0 !important;}")),
-      tags$style(HTML("#leafdown {height: 90% !important; margin-top: 10px; margin-bottom: 10px;}")),
+      #tags$style(HTML(".col-sm-12:last-child .card {margin-bottom: 0 !important;}")),
+      #tags$style(HTML("#leafdown {height: 90% !important; margin-top: 10px; margin-bottom: 10px;}")),
       tags$style(HTML(".card-header {height: 0;
                         visibility: hidden;
                         margin: 0;
-                        padding: 0;}")
-                 )
+                        padding: 0;}")),
+      tags$style(HTML(".card-footer {padding: 0rem 0rem;}
+                      .card {height: 100%"))
     ),
     # we need shinyjs for the leafdown map
     useShinyjs(),
     introjsUI(),
     fluidRow(
-      column(
+      style = "padding-bottom: 10px;",
+      bs4UserCard(
+        type = 2,
         width = 2,
-        # box for racial makeup graph
-        bs4UserCard(
-          src = "https://upload.wikimedia.org/wikipedia/commons/5/57/Caduceus.svg",
-          status = "info",
-          title = "Health Ranking Data",
-          subtitle = "a subtitle here",
-          elevation = 1,
-          "Any content here",
-          width = 12
-        ),
-        bs4Card(
-          width = 12,
-          DT::dataTableOutput("mytable")
-        )
+        src = "https://smalea.com/files/netzwerk/munichom%20logo.png",
+        status = "info",
+        title = "Health Ranking Data",
+        elevation = 1,
+        footer = NULL
       ),
-      column(
+      bs4Card(
+        title = NULL,
         width = 10,
+        height = "100px",
         fluidRow(
-          bs4Card(
-            title = NULL,
-            width = 12,
-            fluidRow(
-              pickerInput(
-                inputId = "year",
-                label = "Select the Year",
-                choices = all_years,
-                selected = max(all_years)
-              ),
-              pickerInput(
-                inputId = "prim_var",
-                label = "Select the Primary Variable",
-                choices = all_vars,
-                selected = all_vars[1]
-              ),
-              pickerInput(
-                inputId = "sec_var",
-                label = "Select the Secondary Variable",
-                choices = all_vars,
-                selected = all_vars[1]
-              ),
-              actionButton("show_modal", "Explore"),
-              dropdownButton(
-                tags$h3("AA"),
-                actionButton("help", "More information on the app"),
-                circle = TRUE, status = "primary", icon = icon("info-circle"), width = "300px"
-              )
-            )
+          pickerInput(
+            inputId = "year",
+            label = "Select the Year",
+            choices = all_years,
+            selected = max(all_years)
+          ),
+          pickerInput(
+            inputId = "prim_var",
+            label = "Select the Primary Variable",
+            choices = all_vars,
+            selected = all_vars[1]
+          ),
+          pickerInput(
+            inputId = "sec_var",
+            label = "Select the Secondary Variable",
+            choices = all_vars,
+            selected = all_vars[1]
+          ),
+          actionButton("show_modal", "Explore"),
+          dropdownButton(
+            tags$h3("AA"),
+            actionButton("help", "More information on the app"),
+            circle = TRUE, status = "primary", icon = icon("info-circle"), width = "300px"
           )
+        )
+      )
+    ),
+    fluidRow(
+          bs4Card(
+            width = 2,
+            DT::dataTableOutput("mytable", height = "30vh")
         ),
-        fluidRow(
-          width = 12,
-          # a card for the map
-          column(
-            width = 7,
-            introBox(
+        column(
+          width = 10,
+          fluidRow(
+            style = "padding-bottom: 10px;",
               bs4Card(
+                width = 6,
                 closable = FALSE,
                 collapsible = FALSE,
-                width = 12,
-                height = 500,
                 # a dropdown to select what KPI should be displayed on the ma
                 # the two buttons used for drilling
                 introBox(
@@ -101,43 +95,40 @@ ui = bs4DashPage(
                   actionButton("drill_up", "Drill Up"),
                   data.step = 2,
                   data.intro = "Drill the Map! <br> 
-                                  Use these buttons to drill the map on the selected shapes."
+                                Use these buttons to drill the map on the selected shapes."
                 ),
                 # the actual map element
-                leafletOutput("leafdown")
+                introBox(
+                  leafletOutput("leafdown", height = "30vh"),
+                  data.step = 1,
+                  data.intro = "Drill the Map! <br> 
+                                  Use these buttons to drill the map on the selected shapes."
+                )
+                
               ),
-              data.step = 1,
-              data.intro = "The Map! <br> 
-                              Click on shapes to select them and show their info in the plots."
-            ),
             bs4Card(
-              width = 12,
-              height = 250,
+              width = 6,
               closable = FALSE,
               collapsible = FALSE,
-              echarts4rOutput("line",height = 250)
+              echarts4rOutput("bar", height = "30vh")
             )
           ),
-          
-          
-          # a column with the two graphs
-          column(
-            width = 5,
+          fluidRow(
+            heigt = "90%",
             bs4Card(
-              width = 12,
+              width = 6,
               closable = FALSE,
               collapsible = FALSE,
-              echarts4rOutput("bar")
+              echarts4rOutput("line", height = "30vh")
             ),
             bs4Card(
-              width = 12,
+              width = 6,
               closable = FALSE,
               collapsible = FALSE,
-              echarts4rOutput("scatter")
+              echarts4rOutput("scatter", height = "30vh")
             )
           )
         )
-      )
     )
   )
 )
