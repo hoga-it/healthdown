@@ -29,7 +29,8 @@ ui = bs4DashPage(
       tags$style(HTML(".card-footer {padding: 0rem 0rem;}
                       .card {height: 100%")),
       tags$style(HTML(".widget-user-header {background-color: #08306B !important}
-                       .widget-user-2 {background-color: #08306B !important}"))
+                       .widget-user-2 {background-color: #08306B !important}")),
+      tags$style(HTML(".dropdown-menu.show {z-index: 1001;}"))
     ),
     # we need shinyjs for the leafdown map
     useShinyjs(),
