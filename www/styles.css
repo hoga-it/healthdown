@@ -1,0 +1,28 @@
+/* Map Rules */
+
+.leaflet-container {background: #fff; height: 100%}
+
+/* workaround for the NA in leaflet legend see https://github.com/rstudio/leaflet/issues/615 */
+.leaflet-control div:last-child {clear: both;}
+ 
+/* increase z-index for dropdowns to make sure they are above the map controls (see #7) */  
+.dropdown-menu.show {z-index: 1001;}     
+
+/* make sure all cards take as much space as they can, so they all line up at the bottom */
+.card {height: 100%}
+
+/* remove headers from all cards */
+.card-header {
+  height: 0;
+  visibility: hidden;
+  margin: 0;
+  padding: 0;
+} 
+
+/* syles for the user card on the top left */
+.card-footer {padding: 0rem 0rem;}
+.widget-user-header {background-color: #08306B !important}
+.widget-user-2 {background-color: #08306B !important}    
+
+            
+    

@@ -16,21 +16,7 @@ ui = bs4DashPage(
   body = bs4DashBody(
     # set the background of the map-container to be white
     tags$head(
-      tags$style(HTML(".leaflet-container { background: #fff; height: 100%}")),
-      # workaround for the NA in leaflet legend see https://github.com/rstudio/leaflet/issues/615
-      tags$style(HTML(".leaflet-control div:last-child {clear: both;}")),
-      tags$style(HTML(".widget-user-header {background-color: #16c2d5!important;}")),
-      #tags$style(HTML(".col-sm-12:last-child .card {margin-bottom: 0 !important;}")),
-      #tags$style(HTML("#leafdown {height: 90% !important; margin-top: 10px; margin-bottom: 10px;}")),
-      tags$style(HTML(".card-header {height: 0;
-                        visibility: hidden;
-                        margin: 0;
-                        padding: 0;}")),
-      tags$style(HTML(".card-footer {padding: 0rem 0rem;}
-                      .card {height: 100%")),
-      tags$style(HTML(".widget-user-header {background-color: #08306B !important}
-                       .widget-user-2 {background-color: #08306B !important}")),
-      tags$style(HTML(".dropdown-menu.show {z-index: 1001;}"))
+      tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")
     ),
     # we need shinyjs for the leafdown map
     useShinyjs(),
