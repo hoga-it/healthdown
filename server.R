@@ -2,7 +2,7 @@ server <- function(input, output, session) {
 
   # start introjs when button is pressed with custom options and events
   observeEvent(
-    input$help,
+    input$btn_info,
     introjs(session, options = list(
       "nextLabel" = "Next",
       "prevLabel" = "Back",
@@ -118,34 +118,41 @@ server <- function(input, output, session) {
   
   
   observeEvent(input$show_modal, {
-    ## check whether we have a region selected and can download the report
-      download_region <- downloadButton(
-        outputId = "download_region", 
-        label = "Go to Data Source",
-        class = "border shadow btn btn-outline-secondary btn-sm"
-      )
-      
-      download_customers <- downloadButton(
-        outputId = "download_customers", 
-        label = " Visit Leafdown",
-        class = "border shadow btn btn-outline-secondary btn-sm")
         
-      download_sales <- downloadButton(
-        outputId = "download_sales", 
-        label = "Take a tour",
+      take_tour <- actionButton(
+        inputId = 'btn_info', 
+        label = "Take a tour!", 
+        icon = icon("binoculars"),
         class = "border shadow btn btn-outline-secondary btn-sm"
       )
 
-    showModal(modalDialog(
-      title = "Explore",
-      htmlTemplate(
-        "www/reports_modal.html",
-        download_region = download_region,
-        download_customers = download_customers,
-        download_sales = download_sales
-      ),
-      size = "l"
-    ))
+      learn_more_data_source <- actionButton(
+        inputId = 'btn_data_source', 
+        label = "Learn More", 
+        class = "border shadow btn btn-outline-secondary btn-sm", 
+        icon = icon("database"), 
+        onclick = "window.open('https://www.countyhealthrankings.org/', '_blank')"
+      )
+      
+      visit_leafdown <- actionButton(
+        inputId = "btn_goto_leafdown", 
+        label = "Visit Leafdown",
+        class = "border shadow btn btn-outline-secondary btn-sm", 
+        icon = icon("globe-europe"), 
+        onclick = "window.open('https://github.com/hoga-it/leafdown', '_blank')"
+      )
+
+      showModal(modalDialog(
+        title = "Explore",
+        htmlTemplate(
+          "www/reports_modal.html",
+          take_tour = take_tour,
+          learn_more_data_source = learn_more_data_source,
+          visit_leafdown = visit_leafdown
+        ),
+        size = "l"
+      ))
+      
   })
  
   

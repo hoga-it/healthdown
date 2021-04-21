@@ -53,14 +53,9 @@ ui = bs4DashPage(
             inputId = "sec_var",
             label = "Select the Secondary Variable",
             choices = all_vars,
-            selected = all_vars[1]
+            selected = all_vars[2]
           ),
-          actionButton("show_modal", "Explore"),
-          dropdownButton(
-            tags$h3("AA"),
-            actionButton("help", "More information on the app"),
-            circle = TRUE, status = "primary", icon = icon("info-circle"), width = "300px"
-          )
+          actionButton("show_modal", "Explore")
         )
       )
     ),
