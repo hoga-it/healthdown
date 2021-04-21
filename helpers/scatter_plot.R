@@ -1,6 +1,4 @@
-create_scatter_plot <- function(curr_sel_data, prim_var, sec_var) {
-  df <- curr_sel_data
-  
+create_scatter_plot <- function(df, prim_var, sec_var) {
   if (nrow(df) > 0) {
     df$name <- ifelse(is.na(df$NAME_2), as.character(df$ST), as.character(df$NAME_2))
     
@@ -12,8 +10,8 @@ create_scatter_plot <- function(curr_sel_data, prim_var, sec_var) {
         x = prim_var,
         y = sec_var
       ) %>% 
-      e_x_axis(nameLocation = "center") %>% 
-      e_y_axis(nameLocation = "center")
+      e_x_axis(nameLocation = "center", min = 0.9 * min(df[[prim_var]])) %>% 
+      e_y_axis(nameLocation = "center", min = 0.9 * min(df[[sec_var]]))
       
   } else {
     # TODO add message to select a shape

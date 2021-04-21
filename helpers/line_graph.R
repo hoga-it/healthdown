@@ -11,7 +11,7 @@ create_line_graph <- function(data, curr_sel_data, prim_var, sec_var) {
       e_charts(year) %>% 
       e_line_(prim_var) %>%
       e_axis_labels(y = prim_var) %>% 
-      e_y_axis(nameLocation = "center")  %>% 
+      e_y_axis(nameLocation = "center", min = 0.9 * min(df[[prim_var]]))  %>% 
       e_tooltip(trigger = "axis") 
   } else {
     # TODO add message to select a shape
