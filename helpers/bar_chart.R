@@ -9,7 +9,7 @@ create_bar_chart <- function(curr_sel_data, prim_var) {
       e_charts(name, stack = "grp") %>%
       e_bar_(prim_var) %>%
       e_axis_labels(y = prim_var) %>% 
-      e_y_axis(nameLocation = "center")  %>% 
+      e_y_axis(nameLocation = "center", nameGap  = 30)  %>% 
       e_flip_coords()
       
   } else {
