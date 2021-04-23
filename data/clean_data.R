@@ -121,6 +121,37 @@ df[,5:dim(df)[2]] <- sapply(df[,5:dim(df)[2]], as.numeric)
 
 reference_header[1:3] <- c("FIPS", "State", "NAME_2")
 names(df) <- c("year", reference_header)
+
+df <- df %>% rename("YPLL Rate" = "Premature death:YPLL Rate", 
+                    "YPLL Rate-CIL" = "Premature death:95% CI - Low", 
+                    "YPLL Rate-CIH" = "Premature death:95% CI - High", 
+                    "YPLL Rate-Z" = "Premature death:Z-Score", 
+                    
+        "Poor or fair health [in %]" = "Poor or fair health:% Fair/Poor",
+        "Poor or fair health [in %]-CIL" = "Poor or fair health:95% CI - Low",
+        "Poor or fair health [in %]-CIH" = "Poor or fair health:95% CI - High",
+        "Poor or fair health [in %]-Z" = "Poor or fair health:Z-Score",
+        
+        "Physically Unhealthy Days" = "Poor physical health days:Physically Unhealthy Days",
+        "Physically Unhealthy Days-CIL" = "Poor physical health days:95% CI - Low", 
+        "Physically Unhealthy Days-CIH" = "Poor physical health days:95% CI - High", 
+        "Physically Unhealthy Days-Z" = "Poor physical health days:Z-Score", 
+        
+        "Mentally Unhealthy Days" = "Poor mental health days:Mentally Unhealthy Days", 
+        "Mentally Unhealthy Days-CIL" = "Poor mental health days:95% CI - Low",
+        "Mentally Unhealthy Days-CIH" = "Poor mental health days:95% CI - High",
+        "Mentally Unhealthy Days-Z" = "Poor mental health days:Z-Score",
+        
+        "Adult smoking [in %]" = "Adult smoking:% Smokers", 
+        "Adult smoking [in %]-CIL" = "Adult smoking:95% CI - Low", 
+        "Adult smoking [in %]-CIH" = "Adult smoking:95% CI - High", 
+        "Adult smoking [in %]-Z" = "Adult smoking:Z-Score", 
+        
+        "Adult obesity [in %]" = "Adult obesity:% Obese",
+        "Adult obesity [in %]-CIL" = "Adult obesity:95% CI - Low",
+        "Adult obesity [in %]-CIH" = "Adult obesity:95% CI - High",
+        "Adult obesity [in %]-Z" = "Adult obesity:Z-Score")
+
 df <- df %>% left_join(us_election_states %>% select(State, ST))
 df <- df %>% relocate(ST, .before = NAME_2)
 write.csv2(df, "data/clean/all.csv", row.names = FALSE)
