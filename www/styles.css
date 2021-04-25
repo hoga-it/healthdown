@@ -1,5 +1,34 @@
-/* Map Rules */
+div.spread4evenly > div {
+    display: inline-block;
+    *display: inline; /* For IE7 */
+    zoom: 1; /* Trigger hasLayout */
+    width: 25%;
+    float: left;
+    margin: 10px 0;
+}
 
+div.spread4evenly {
+  width: 100%;  
+}
+
+.img-circle {
+  border-radius: 0 !important;
+}
+
+
+/* margins for top row */
+.top-row {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+/* dropdowns */
+.var-dropdown {
+  margin-right: 15px;
+}
+
+
+/* Map Rules */
 .leaflet-container {background: #fff; height: 100%}
 
 /* workaround for the NA in leaflet legend see https://github.com/rstudio/leaflet/issues/615 */

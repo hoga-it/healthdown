@@ -22,41 +22,63 @@ ui = bs4DashPage(
     useShinyjs(),
     introjsUI(),
     fluidRow(
-      style = "padding-bottom: 10px;",
+      class = "top-row",
       bs4UserCard(
         type = 2,
         width = 2,
-        src = "caduceus.png",
+        src = "hex-healthdown.png",
         status = "info",
-        title = "Health Ranking Data",
+        title = "Health Ranking",
         elevation = 1,
         footer = NULL
       ),
       bs4Card(
         title = NULL,
-        width = 10,
+        width = 8,
         height = "100px",
         fluidRow(
-          pickerInput(
-            inputId = "year",
-            label = "Select the Year",
-            choices = all_years,
-            selected = max(all_years)
+        div(class = "spread4evenly",
+          div(
+            class = "var-dropdown",
+            pickerInput(
+              inputId = "year",
+              label = "Select the Year",
+              choices = all_years,
+              selected = max(all_years)
+            )
           ),
-          pickerInput(
-            inputId = "prim_var",
-            label = "Select the Primary Variable",
-            choices = all_vars,
-            selected = all_vars[1]
+          div(
+            class = "var-dropdown",
+            pickerInput(
+              inputId = "prim_var",
+              label = "Select the Primary Variable",
+              choices = all_vars,
+              selected = all_vars[1]
+            )
           ),
-          pickerInput(
-            inputId = "sec_var",
-            label = "Select the Secondary Variable",
-            choices = all_vars,
-            selected = all_vars[2]
+          div(
+            class = "var-dropdown",
+            pickerInput(
+              inputId = "sec_var",
+              label = "Select the Secondary Variable",
+              choices = all_vars,
+              selected = all_vars[2]
+            )
           ),
+          div(
           actionButton("show_modal", "Explore")
+          )
         )
+        )
+      ),
+      bs4UserCard(
+        type = 2,
+        width = 2,
+        src = "hex-leafdown.png",
+        title = "leafdown",
+        status = "info",
+        elevation = 1,
+        footer = NULL
       )
     ),
     fluidRow(
