@@ -23,17 +23,13 @@ ui = bs4DashPage(
     introjsUI(),
     fluidRow(
       class = "top-row",
-      bs4UserCard(
-        type = 2,
+      bs4Card(
         width = 2,
-        src = "hex-healthdown.png",
-        status = "info",
-        title = "Health Ranking",
-        elevation = 1,
-        footer = NULL
+        class = "card-hexagon",
+        img(src = "hex-healthdown.png"),
+        div("Health Ranking")
       ),
       bs4Card(
-        title = NULL,
         width = 8,
         height = "100px",
         fluidRow(
@@ -66,25 +62,24 @@ ui = bs4DashPage(
             )
           ),
           div(
-          actionButton("show_modal", "Explore")
+            actionButton("show_modal", "Explore"),
+            style = "text-align: center; margin-top: 25px;"
           )
         )
         )
       ),
-      bs4UserCard(
-        type = 2,
+      bs4Card(
         width = 2,
-        src = "hex-leafdown.png",
-        title = "leafdown",
-        status = "info",
-        elevation = 1,
-        footer = NULL
+        class = "card-hexagon",
+        img(src = "hex-leafdown.png"),
+        div(tags$a("Leafdown", tags$i(class = "fas fa-xs fa-external-link-alt"), 
+                   href = "https://github.com/hoga-it/leafdown", target="_blank", style = "color: white;"))
       )
     ),
     fluidRow(
           bs4Card(
             width = 2,
-            DT::dataTableOutput("mytable", height = "30vh")
+            DT::dataTableOutput("mytable", height = "50vh")
         ),
         column(
           width = 10,

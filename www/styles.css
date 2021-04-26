@@ -49,9 +49,42 @@ div.spread4evenly {
 } 
 
 /* syles for the user card on the top left */
-.card-footer {padding: 0rem 0rem;}
-.widget-user-header {background-color: #08306B !important}
-.widget-user-2 {background-color: #08306B !important}    
+.card-hexagon {
+  height: 100px;
+  position: relative;
+}
+
+.card-hexagon div {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 100px;
+  font-size: 25px;
+  font-weight: 300;
+  color: white;
+}
+
+.card-hexagon img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100px;
+    float: left;
+    padding: 5px;
+}
+
+.card-hexagon i {
+  font-size: 15px;
+  font-weight: 510;
+}
+
+.top-row > .col-sm-2:first-child > .card{
+  background-color: #08306B;
+}
+
+.top-row > .col-sm-2:last-child > .card{
+  background-color: #6dcc5a;
+}
 
             
     
