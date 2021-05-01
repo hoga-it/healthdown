@@ -20,5 +20,16 @@ create_scatter_plot <- function(df, prim_var, sec_var) {
     e_y_axis(
       nameLocation = "center", nameGap = 50,
       min = floor(0.9 * min(df[[sec_var]]))
+    ) %>%
+    e_tooltip(
+      formatter = htmlwidgets::JS(paste0("
+        function(params){
+          return(
+            '<strong>' + params.seriesName + '</strong><br />", 
+            prim_var, ": ' + params.value[0] +  '<br />", 
+            sec_var, ": ' + params.value[1]
+          )
+        } 
+      "))
     )
 }

@@ -12,5 +12,15 @@ create_bar_chart <- function(df, prim_var) {
     e_bar_(prim_var) %>%
     e_axis_labels(y = prim_var) %>% 
     e_y_axis(nameLocation = "center", nameGap  = 30)  %>% 
-    e_flip_coords()
+    e_flip_coords() %>%
+    e_tooltip(
+      formatter = htmlwidgets::JS(paste0("
+        function(params){
+          return(
+            '<strong>' + params.seriesName + '</strong><br />", 
+             prim_var, ": ' + params.value[0]
+          )
+        } 
+      "))
+    )
 }
