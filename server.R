@@ -128,6 +128,7 @@ server <- function(input, output, session) {
   })
   
   observeEvent(input$btn_info, {
+    removeModal()
     introjs(session, options = list(
       "nextLabel" = "Next",
       "prevLabel" = "Back",

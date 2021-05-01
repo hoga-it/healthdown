@@ -4,7 +4,7 @@ div.spread4evenly > div {
     zoom: 1; /* Trigger hasLayout */
     width: 25%;
     float: left;
-    margin: 10px 0;
+    margin: 0;
 }
 
 div.spread4evenly {
@@ -54,7 +54,7 @@ div.spread4evenly {
   position: relative;
 }
 
-.card-hexagon div {
+.card-hexagon-title {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -86,5 +86,29 @@ div.spread4evenly {
   background-color: #6dcc5a;
 }
 
-            
-    
+.top-row label {
+  letter-spacing: .08em;
+  font-weight: 500 !important;
+}
+
+
+.learn-more {
+    width: 60%;
+    border: 2px solid #152190;
+    padding: 10px 10px;
+    color: #000;
+    font-size:14px;
+    border-radius: 0;
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    background: white;
+}
+
+.learn-more:hover {
+  background-color: #152190;
+  color: #fff;
+}
