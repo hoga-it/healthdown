@@ -92,7 +92,7 @@ div.spread4evenly {
 }
 
 .healthdown-button {
-  border: 2px solid #152190;
+  border: 2px solid #08306B;
   padding: 10px 10px;
   color: #000;
   font-size:14px;
@@ -111,7 +111,7 @@ div.spread4evenly {
 }
 
 .learn-more:hover {
-  background-color: #152190;
+  background-color: #08306B;
   color: #fff;
 }
 
