@@ -65,7 +65,7 @@ ui = bs4DashPage(
                 )
               ),
               div(
-                actionButton("show_modal", "Explore", class = "learn-more"),
+                actionButton("show_modal", "Explore",  class = "learn-more healthdown-button"),
                 style = "text-align: center; margin-top: 25px;"
               )
             )
@@ -119,8 +119,8 @@ ui = bs4DashPage(
             closable = FALSE,
             collapsible = FALSE,
             introBox(
-              actionButton("drill_down", "Drill Down"),
-              actionButton("drill_up", "Drill Up"),
+              actionButton("drill_down", "Drill Down", icon = icon("arrow-down"), class = "drill-button healthdown-button"),
+              actionButton("drill_up", "Drill Up", icon = icon("arrow-up"), class = "drill-button healthdown-button"),
               data.step = 2,
               data.intro = "Drill the Map! <br> 
                             Use these buttons to drill the map on the selected shapes."

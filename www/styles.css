@@ -91,21 +91,23 @@ div.spread4evenly {
   font-weight: 500 !important;
 }
 
+.healthdown-button {
+  border: 2px solid #152190;
+  padding: 10px 10px;
+  color: #000;
+  font-size:14px;
+  border-radius: 0;
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  background: white;
+}
 
 .learn-more {
     width: 60%;
-    border: 2px solid #152190;
-    padding: 10px 10px;
-    color: #000;
-    font-size:14px;
-    border-radius: 0;
-    font-weight: bold;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    background: white;
 }
 
 .learn-more:hover {
@@ -118,4 +120,11 @@ div.spread4evenly {
   letter-spacing: .08em;
   text-align: center;
   width: 100%;
+}
+
+
+
+/* drill arrows */
+.drill-button {
+  margin-bottom: 5px;
 }
