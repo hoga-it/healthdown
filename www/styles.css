@@ -112,3 +112,10 @@ div.spread4evenly {
   background-color: #152190;
   color: #fff;
 }
+
+.shiny-output-error {
+  margin-top: 20%;
+  letter-spacing: .08em;
+  text-align: center;
+  width: 100%;
+}
