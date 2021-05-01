@@ -1,0 +1,13 @@
+name: healthdown
+title: healthdown
+username:
+account: hoga
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4023753
+bundleId: 4542855
+url: https://hoga.shinyapps.io/healthdown/
+when: 1619853650.46176
+lastSyncTime: 1619853650.46176
+asMultiple: FALSE
+asStatic: FALSE

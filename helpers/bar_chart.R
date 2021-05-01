@@ -1,6 +1,4 @@
-create_bar_chart <- function(curr_sel_data, prim_var) {
-  df <- curr_sel_data
-  
+create_bar_chart <- function(df, prim_var) {
   if (nrow(df) > 0) {
     df$name <- ifelse(is.na(df$NAME_2), as.character(df$ST), as.character(df$NAME_2))
     
