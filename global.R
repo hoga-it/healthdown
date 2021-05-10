@@ -1,28 +1,4 @@
-################################################################################
-# Entrypoint of the Shiny app
-#
-# Author: Peter Gandenberger
-################################################################################
-
-
 library(shiny)
-library(dplyr)
-library(tidyr)
-library(tidyverse)
-library(dygraphs)
-library(prophet)
-library(xts)
-library(lubridate)
-library(plotly)
-library(DT)
-library(sparkline)
-library(shinyjs)
-library(R6)
-library(htmlTable)
-library(bs4Dash)
-library(shinyWidgets)
-library(shinycssloaders)
-
 library(shinyjs)
 library(leaflet)
 library(leafdown)
@@ -30,11 +6,12 @@ library(echarts4r)
 library(dplyr)
 library(tidyr)
 library(RColorBrewer)
+library(shinydashboard)
 library(shinyWidgets)
 library(readr)
 
 
-# Healthdown -----------------------------------------------------------------
+# resources -----------------------------------------------------------------
 source("healthdown/healthdown_ui.R")
 source("healthdown/healthdown.R")
 
