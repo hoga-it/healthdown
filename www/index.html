@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--  Document Title============================================= -->
+    <title>Healthdown</title>
+    <!-- Shiny added header -->
+    {{ headContent() }}
+    {{ bootstrapLib() }}
+    <!-- Favicons ============================================= -->
+    <link rel="icon" type="image/png" href="assets/images/caduceus_black.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ffffff">
+    <!--  Stylesheets =============================================-->
+    <!-- Default stylesheets-->
+    <link href="assets/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Template specific stylesheets-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Volkhov:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="assets/lib/animate.css/animate.css" rel="stylesheet">
+    <link href="assets/lib/components-font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/lib/et-line-font/et-line-font.css" rel="stylesheet">
+    <link href="assets/lib/flexslider/flexslider.css" rel="stylesheet">
+    <link href="assets/lib/owl.carousel/dist/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/lib/owl.carousel/dist/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="assets/lib/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
+    <link href="assets/lib/simple-text-rotator/simpletextrotator.css" rel="stylesheet">
+    <!-- Main stylesheet and color file-->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style-custom.css" rel="stylesheet">
+    <link href="assets/css/style-app.css" rel="stylesheet">
+    <link id="color-scheme" href="assets/css/colors/default.css" rel="stylesheet">
+  </head>
+  
+  
+  
+   <body data-spy="scroll" data-target=".onpage-navigation" data-offset="60">
+    <main>
+      <div class="page-loader">
+        <div class="loader">Loading...</div>
+      </div>
+      <nav class="navbar navbar-custom navbar-transparent navbar-fixed-top one-page" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse">
+          			<span class="sr-only">Toggle navigation</span>
+          			<span class="icon-bar"></span>
+          			<span class="icon-bar"></span>
+          			<span class="icon-bar"></span>
+  			      </button>
+  			      <a class="navbar-brand" href="#totop">
+  			        <img src="assets/images/caduceus.png" width="50" style="margin-top:-10px; float:left;">
+  			        <div style="float:left;">Healthdown</div>
+  			      </a>
+          </div>
+          <div class="collapse navbar-collapse" id="custom-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#totop">Home</a></li>
+              <li><a class="section-scroll" href="#vision">About</a></li>
+              <li><a class="section-scroll" href="#topics">App</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <section class="home-section home-full-height bg-dark bg-gradient" id="home" data-background="assets/images/backgrounds/earth.jpg">
+        <div class="titan-caption">
+          <div class="caption-content">
+            <div class="font-alt titan-title-size-1">Drillable Map for Health Factor Comparision</div>
+            <div class="font-alt mb-40 titan-title-size-4">HEALTHDOWN</div>
+            <a class="section-scroll btn btn-border-w btn-round" href="#vision">Learn More</a>
+            <br>
+            <br>
+            <a class="section-scroll btn btn-border-w btn-round" href="#topics">Try the App</a>
+          </div>
+        </div>
+      </section>
+      <div class="main">
+        
+        <!-- Vision -->
+        <section class="module pb-0 pt-0 bg-dark-90" id="vision" style="height:100vh;">
+          <div class="row position-relative m-0">
+            <div class="col-xs-12 col-md-6 side-image" data-background="assets/images/screenshot.jpg" style="background-size: contain; background-image: url(&quot;assets/images/screenshot.jpg&quot;);margin-left: 15px;"></div>
+            <div class="col-xs-12 col-md-6 col-md-offset-6">
+              <div class="row finance-image-content">
+                <div class="col-md-10 col-md-offset-1 about-text">
+                  <h2 class="module-title font-alt align-left">About Healthdown</h2>
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <div class="alt-features-item">
+                        <div class="alt-features-icon"><span class="fa fa-heartbeat"></span></div>
+                        <h3 class="alt-features-title font-alt">Healthdown App</h3>
+                        The Healthdown app provides an interactive comparison of various health factors at the U.S. state and county level.
+                        <ul>
+                          <li>Compare various health factors across states or counties.</li>
+                          <li>Find regions of interest with the search function.</li>
+                          <li>Switch between various factors displayed in the map.</li>
+                        </ul>
+                        </div>
+                        <div class="alt-features-item">
+                        <div class="alt-features-icon"><span class="fa fa-database"></span></div>
+                        <h3 class="alt-features-title font-alt">Data Source</h3>
+                        The annual rankings by the University of Wisconsin Population 
+        Health Institute provide an insightful snapshot of how health is affected by various factors.</div>
+                        <div class="alt-features-item">
+                        <div class="alt-features-icon"><span class="fa fa-globe"></span></div>
+                        <h3 class="alt-features-title font-alt">The leafdown package</h3>
+                        The leafdown package adds drilldown functionality for leaflet choropleths. Among other things, it offers:
+                        <ul>
+                          <li>Selectable shapes.</li>
+                          <li>Flexible drilldown functionality.</li>
+                          <li>Efficiently change the displayed variables without redrawing the map.</li>
+                          <li>Change map backgrounds on runtime.</li>
+                        </ul>
+                      </div>  
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- WITS - Demo -->
+        <section class="module pb-0 pt-0" id="topics">
+          <div class="container app-container">
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                {{ what_if_ui }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+              &nbsp;
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <section class="module-small bg-dark">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="widget">
+                  <h5 class="widget-title font-alt">Developed By</h5>
+                  <p>
+                    <div class="footer-social-links">
+                      Peter Gandenberger
+                      <a href="https://www.linkedin.com/in/peter-gandenberger-a7a2ba172/">
+                        <i class="fa fa-linkedin"></i>
+                      </a>
+                    </div>
+                    <br>
+                    <div class="footer-social-links">
+                      Andreas Hofheinz
+                      <a href="https://www.linkedin.com/in/andreas-hofheinz-3b686913b/">
+                        <i class="fa fa-linkedin"></i>
+                      </a>
+                    </div>
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="widget">
+                  <h5 class="widget-title font-alt">Source-Code</h5>
+                  <p>
+                    <div class="footer-social-links">
+                      You can find the full source-code of this app on github.
+                      <a href="https://github.com/hoga-it/healthdown"><i class="fa fa-github"></i></a>
+                    </div>
+                    <br>
+                    <div class="footer-social-links">
+                      For this app we used our Leafdown package.
+                      <a href="https://github.com/hoga-it/leafdown"><i class="fa fa-github"></i></a>
+                    </div>
+                    
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="widget">
+                  <h5 class="widget-title font-alt">Shiny Contest 2021</h5>
+                  <p>
+                    This app was developed for the
+                    <a href="https://blog.rstudio.com/2021/03/11/time-to-shiny/">'Shiny Contest 2021'</a>.
+                    
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="widget">
+                  <h5 class="widget-title font-alt">HTML Template</h5>
+                  <p>
+                    Inspired by <a href="https://github.com/nz-stefan/blog-explorer">Stefan Schliebs Blog Explorer</a>
+                    we used the 
+                    <a href="https://markup.themewagon.com/titan/index.html">TITAN HTML-Template</a>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> 
+      </div>
+      <div class="scroll-up"><a href="#totop"><i class="fa fa-angle-double-up"></i></a></div>
+    </main>
+    <!-- JavaScripts ============================================= -->
+    <script src="assets/lib/wow/dist/wow.js"></script>
+    <script src="assets/lib/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.js"></script>
+    <script src="assets/lib/isotope/dist/isotope.pkgd.js"></script>
+    <script src="assets/lib/imagesloaded/imagesloaded.pkgd.js"></script>
+    <script src="assets/lib/flexslider/jquery.flexslider.js"></script>
+    <script src="assets/lib/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="assets/lib/smoothscroll.js"></script>
+    <script src="assets/lib/magnific-popup/dist/jquery.magnific-popup.js"></script>
+    <script src="assets/lib/simple-text-rotator/jquery.simple-text-rotator.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

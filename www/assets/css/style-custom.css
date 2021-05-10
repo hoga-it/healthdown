@@ -1,0 +1,35 @@
+/** App Container ****************************************************/
+
+.app-container {
+  width: 99vw;
+  margin: 0;
+  background-color: #f5f5f5;
+}
+
+
+.alt-features-icon {
+  color: white; 
+}
+
+.alt-features-title {
+  color: white;
+}
+
+.finance-image-content {
+  border: 0;
+}
+
+.about-text {
+}
+
+.alt-features-title {
+  font-size: 19px;
+}
+
+.alt-features-item {
+  font-size: 15px;
+}
+
+.module-title {
+  font-size: 36px;
+}
