@@ -5,5 +5,7 @@ The **Healthdown** app allows interactive comparison of various health factors a
 
 The app was primarily developed for the [Shiny Contest 2021](https://blog.rstudio.com/2021/03/11/time-to-shiny/) to demonstrate the potentials of the [leafdown package](https://hoga-it.github.io/leafdown/index.html).
 
+Link to healthdown: https://hoga.shinyapps.io/healthdown/.
+
 <br>
 <img src='www/assets/images/screenshot.jpg'/>
