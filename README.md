@@ -3,7 +3,7 @@ The **Healthdown** app allows interactive comparison of various health factors a
 
 **Data source**: The annual rankings by the [University of Wisconsin Population Health Institute](https://www.countyhealthrankings.org/) provide an insightful snapshot of how health is affected by various factors.
 
-The app was primarily developed for the [Shiny Contest 2021](https://blog.rstudio.com/2021/03/11/time-to-shiny/) to demonstrate the potentials of the [leafdown package](https://hoga-it.github.io/leafdown/index.html).
+The app was primarily developed for the [Shiny Contest 2021](https://blog.rstudio.com/2021/03/11/time-to-shiny/) to demonstrate the capabilities of the [leafdown package](https://hoga-it.github.io/leafdown/index.html).
 
 <br>
 <img src='www/assets/images/docs/screenshot.jpg'/>
