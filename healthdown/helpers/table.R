@@ -1,4 +1,4 @@
-create_mytable <- function(all_data, sel_data, map_level, prim_var) {
+create_mytable <- function(all_data, sel_data, map_level, prim_var, height) {
   if (map_level == 1) {
     curr_gid <- "GID_1"
     extension <- list()
@@ -11,7 +11,7 @@ create_mytable <- function(all_data, sel_data, map_level, prim_var) {
   data_sub <- subset_tbl_data(all_data, map_level, prim_var)
   DT::datatable(
     data_sub, rownames = FALSE, selection = list(selected = sel_ids), extensions = extension,
-    options = table_options(map_level)
+    options = table_options(map_level, height)
   )
   
 }
@@ -29,9 +29,9 @@ subset_tbl_data <- function(df, map_level, prim_var) {
   df_sub
 }
 
-table_options <- function(map_level) {
+table_options <- function(map_level, height) {
   tbl_options <- list(
-    dom = 'ft', deferRender = TRUE, scrollY = "55vh", scroller = TRUE, paging = FALSE, bSort = FALSE
+    dom = 'ft', deferRender = TRUE, scrollY = height, scroller = TRUE, paging = FALSE, bSort = FALSE
   )
   if (map_level == 2) {
     tbl_options <- c(

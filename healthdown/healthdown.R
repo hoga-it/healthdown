@@ -1,19 +1,32 @@
-mod_healthdown <- function(input, output, session) {
+mod_healthdown <- function(input, output, session, id) {
   my_leafdown <- Leafdown$new(spdfs_list, "leafdown", input)
-
+  
+  print(session$ns("healthdown"))
   rv <- reactiveValues()
   rv$update_leafdown <- 0
-
+  
+  observeEvent(input$view1, {
+    js$load_grid_stack_layout(view_2())  
+  })
+  
+  observeEvent(input$view2, {
+    js$load_grid_stack_layout(view_3())
+  })
+  
+  observeEvent(input$view3, {
+    js$load_grid_stack_layout(view_1())  
+  })
+  
   observeEvent(input$drill_down, {
     my_leafdown$drill_down()
     rv$update_leafdown <- rv$update_leafdown + 1
   })
-
+  
   observeEvent(input$drill_up, {
     my_leafdown$drill_up()
     rv$update_leafdown <- rv$update_leafdown + 1
   })
-
+  
   data <- reactive({
     req(rv$update_leafdown)
     data <- my_leafdown$curr_data
@@ -32,17 +45,17 @@ mod_healthdown <- function(input, output, session) {
     my_leafdown$add_data(data)
     data
   })
-
-
+  
+  
   output$leafdown <- renderLeaflet({
     req(spdfs_list)
     req(data)
-
+    
     data <- data()
     data$y <- data[, input$prim_var]
     fillcolor <- leaflet::colorNumeric("Blues", data$y)
     legend_title <- input$prim_var
-
+    
     labels <- create_labels(data, my_leafdown$curr_map_level, input$prim_var, input$sec_var)
     my_leafdown$draw_leafdown(
       fillColor = ~ fillcolor(data$y),
@@ -60,27 +73,26 @@ mod_healthdown <- function(input, output, session) {
         opacity = 1
       )
   })
-
+  
   output$line <- renderEcharts4r({
     create_line_graph(us_health_all, my_leafdown$curr_sel_data(), input$prim_var, input$sec_var)
   })
-
+  
   output$scatter <- renderEcharts4r({
     create_scatter_plot(my_leafdown$curr_sel_data(), input$prim_var, input$sec_var)
   })
-
+  
   output$bar <- renderEcharts4r({
     create_bar_chart(my_leafdown$curr_sel_data(), input$prim_var)
   })
-
-
+  
   output$mytable <- DT::renderDataTable({
     all_data <- data()
     sel_data <- my_leafdown$curr_sel_data()
     map_level <- my_leafdown$curr_map_level
-    create_mytable(all_data, sel_data, map_level, input$prim_var)
+    create_mytable(all_data, sel_data, map_level, input$prim_var, max(input$c_table_height, 200) - 110)
   })
-
+  
   # (Un)select shapes in map when click on table
   observeEvent(input$mytable_row_last_clicked, {
     sel_row <- input$mytable_row_last_clicked

@@ -9,7 +9,7 @@ library(RColorBrewer)
 library(shinydashboard)
 library(shinyWidgets)
 library(readr)
-
+library(gridstackeR)
 
 # resources -----------------------------------------------------------------
 source("healthdown/healthdown_ui.R")
@@ -21,6 +21,7 @@ source("healthdown/helpers/scatter_plot.R")
 source("healthdown/helpers/line_graph.R")
 source("healthdown/helpers/table.R")
 source("healthdown/helpers/bar_chart.R")
+source("healthdown/helpers/views.R")
 
 states <- readRDS("shapes/us1.RDS")
 counties <- readRDS("shapes/us2.RDS")

@@ -7,9 +7,9 @@ mod_healthdown_ui <- function(id) {
       class = "top-row",
       box(
         width = 2,
-        class = "card-hexagon",
-        img(src = "assets/images/hex-healthdown.png"),
-        div("Health Ranking", class = "card-hexagon-title")
+        actionButton(ns("view1"), "Map View", style = "width:100%;"),
+        actionButton(ns("view2"), "Full Map", style = "width:100%;"),
+        actionButton(ns("view3"), "Overview", style = "width:100%;"),
       ),
       box(
         width = 8,
@@ -65,44 +65,29 @@ mod_healthdown_ui <- function(id) {
       )
       )
     ),
-    fluidRow(
-      box(
-        width = 2,
-        DT::dataTableOutput(ns("mytable"), height = "50vh")
+    # ---- second row
+    grid_stack(
+      grid_stack_item(
+        w = 2, h = 10, x = 0, y = 0, id =  ns("c_table"),
+        DT::dataTableOutput(ns("mytable"))
       ),
-      column(
-        width = 10,
-        fluidRow(
-          box(
-            width = 6,
-            closable = FALSE,
-            collapsible = FALSE,
-            actionButton(ns("drill_down"), "Drill Down", icon = icon("arrow-down"), class = "drill-button healthdown-button"),
-            actionButton(ns("drill_up"), "Drill Up", icon = icon("arrow-up"), class = "drill-button healthdown-button"),
-            leafletOutput(ns("leafdown"), height = "30vh")
-          ),
-          box(
-            width = 6,
-            closable = FALSE,
-            collapsible = FALSE,
-            echarts4rOutput(ns("bar"), height = "30vh")
-          )
-        ),
-        fluidRow(
-          height = "90%",
-          box(
-            width = 6,
-            closable = FALSE,
-            collapsible = FALSE,
-            echarts4rOutput(ns("line"), height = "30vh")
-          ),
-          box(
-            width = 6,
-            closable = FALSE,
-            collapsible = FALSE,
-            echarts4rOutput(ns("scatter"), height = "30vh")
-          )
-        )
+      grid_stack_item(
+        w = 5, h = 5, x = 2, y = 0, id = ns("c_map"),
+        actionButton(ns("drill_down"), "Drill Down", icon = icon("arrow-down"), class = "drill-button healthdown-button"),
+        actionButton(ns("drill_up"), "Drill Up", icon = icon("arrow-up"), class = "drill-button healthdown-button"),
+        leafletOutput(ns("leafdown"), height = "calc(100% - 50px)")
+      ),
+      grid_stack_item(
+        w = 5, h = 5, x = 7, y = 0, id = ns("c_bar"),
+        echarts4rOutput(outputId =  ns("bar"), height = "100%")
+      ),
+      grid_stack_item(
+        w = 5, h = 5, x = 2, y = 5, id =  ns("c_line"),
+        echarts4rOutput(outputId =  ns("line"), height = "100%")
+      ),
+      grid_stack_item(
+        w = 5, h = 5, x = 7, y = 5, id =  ns("c_scatter"),
+        echarts4rOutput(outputId =  ns("scatter"), height = "100%")
       )
     )
   )
