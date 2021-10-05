@@ -1,5 +1,5 @@
 # healthdown <img src='www/assets/images/hex-healthdown.png' align="right" height="139" /></a>
-The **Healthdown** app allows interactive comparison of various health factors at the U.S. state and county level.
+The **healthdown** app allows interactive comparison of various health factors at the U.S. state and county level.
 
 **Data source**: The annual rankings by the [University of Wisconsin Population Health Institute](https://www.countyhealthrankings.org/) provide an insightful snapshot of how health is affected by various factors.
 
